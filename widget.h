@@ -20,5 +20,33 @@ public:
 private:
     Ui::Widget *ui;
     QString operation;
+    //prevent multiple instances of '.' appearing
+    bool dotClicked = false;
+
+    void setUpButtons();
+
+    //button declarations
+    void zeroButtonClicked();
+    void dotButtonClicked();
+    void oneButtonClicked();
+    void twoButtonClicked();
+    void threeButtonClicked();
+    void fourButtonClicked();
+    void fiveButtonClicked();
+    void sixButtonClicked();
+    void sevenButtonClicked();
+    void eightButtonClicked();
+    void nineButtonClicked();
+    void openingParaClicked();
+    void closingParaClicked();
+    void addButtonClicked();
+    void minusButtonClicked();
+    void multButtonClicked();
+    void divisionButtonClicked();
+    void clearOneButtonClicked();
+    void clearAllButtonClicked();
+    void equalButtonClicked();
+    //end button declarations
+
 };
 #endif // WIDGET_H
