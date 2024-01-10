@@ -3,7 +3,6 @@
 
 
 #include <iostream>
-#include <cassert>
 #include <fstream>
 #include <string>
 
@@ -34,7 +33,6 @@ public:
 
     void add(const T& value);
     void remove(int index);
-    void unitTest();
     void write(const char* file_name);
     void read(const char* file_name);
     void swap(int a, int b);
@@ -103,7 +101,10 @@ void DyArray<T>::add(const T& value)
         array = temp_array;
     }
 
-    assert((size < max_size) && "Array has overflowed");
+    if (size > max_size)
+    {
+        throw std::invalid_argument("Array has overflowed");
+    }
     array[size] = value;
     size++;
 }
@@ -111,7 +112,10 @@ void DyArray<T>::add(const T& value)
 template<typename T>
 void DyArray<T>::remove(int index)
 {
-    assert(isOutOfBounds(index) && "Index out of bounds");
+    if (!isOutOfBounds(index))
+    {
+        throw std::invalid_argument("Index out of bounds");
+    }
     T* temp_array = new T[max_size];
 
 
@@ -145,7 +149,11 @@ int DyArray<T>::get_max_size() const
 template<typename T>
 T& DyArray<T>::operator[](int index)
 {
-    assert(isOutOfBounds(index) && "Array index out of bounds");
+
+    if (!(isOutOfBounds(index)))
+    {
+        throw std::invalid_argument("Index out of bounds");
+    }
 
     return array[index];
 }
@@ -158,39 +166,6 @@ const T& DyArray<T>::operator[](int index) const
     return array[index];
 }
 
-template<typename T>
-void DyArray<T>::unitTest()
-{
-
-    DyArray<int> TestArray;
-
-    assert((TestArray.size == 0) && ("Constructer failure"));
-    assert((TestArray.max_size == 2) && ("Constructer failure"));
-    assert(TestArray.array && "Constructer failure");
-    std::cout << "Constructer succesful" << std::endl;
-
-    TestArray.add(5);
-    TestArray.add(3);
-    TestArray.add(2);
-
-    assert(TestArray[0] == 5 && TestArray[1] == 3 && TestArray[2] == 2 && "Add method failure");
-
-    assert(TestArray.size == 3 && "Unexpected size occured");
-
-    std::cout << "Add() method succesful" << std::endl;
-
-
-
-    DyArray<int> newTestArray = TestArray;
-
-    assert(newTestArray[0] == 5 && newTestArray[1] == 3 && TestArray[2] == 2 && "Copy constructer failure");
-    std::cout << "Copy constructer succesful" << std::endl;
-
-    newTestArray.clear();
-
-    assert(newTestArray.isEmpty() && "Clear() method failure");
-    std::cout << "Clear() method succesful" << std::endl;
-}
 
 
 
@@ -251,7 +226,7 @@ void DyArray<T>::read(const char* file_name)
 template<typename T>
 void DyArray<T>::swap(int a, int b)
 {
-    assert(isOutOfBounds(a) && isOutOfBounds(b) && "Index out of bounds");
+   // assert(isOutOfBounds(a) && isOutOfBounds(b) && "Index out of bounds");
     T temp = array[a];
     array[a] = array[b];
     array[b] = temp;
@@ -260,7 +235,10 @@ void DyArray<T>::swap(int a, int b)
 template<typename T>
 T DyArray<T>::remove_last()
 {
-    assert((size > 0) && "Array is empty");
+    if (size <= 0)
+    {
+        throw std::invalid_argument("Array is empty");
+    }
     T value = array[get_size() - 1];
     remove(get_size() - 1);
     return value;
@@ -269,7 +247,10 @@ T DyArray<T>::remove_last()
 template<typename T>
 inline T DyArray<T>::remove_first()
 {
-    assert((size > 0) && "Array is empty");
+    if (size <= 0)
+    {
+        throw std::invalid_argument("Array is empty");
+    }
     T value = array[0];
     remove(0);
     return value;

@@ -10,8 +10,8 @@ Widget::Widget(QWidget *parent)
     ui->setupUi(this);
 
     //Setup digital font
-    QFontDatabase::addApplicationFont(":/new/prefix1/DigitalDisplayRegular-ODEO.ttf");
-    QFont digital_font = QFont("Digital Display", 30);
+    QFontDatabase::addApplicationFont(":/new/prefix1/PocketCalculator-qjd.ttf");
+    QFont digital_font = QFont("Pocket Calculator", 30);
     ui->operationLabel->setFont(digital_font);
 
     setUpButtons();
@@ -177,9 +177,19 @@ void Widget::clearAllButtonClicked()
 
 void Widget::equalButtonClicked()
 {
+
+
+    try {
     double answer = calculate(operation.toStdString());
     operation.clear();
     ui->operationLabel->setText(QString::number(answer));
+
+    } catch (const std::invalid_argument& e) {
+        operation.clear();
+        ui->operationLabel->setText("Error");
+        qDebug() << e.what();
+    }
+
 }
 
 
