@@ -15,6 +15,8 @@ Widget::Widget(QWidget *parent)
     ui->operationLabel->setFont(digital_font);
 
     setUpButtons();
+
+
 }
 
 Widget::~Widget()
