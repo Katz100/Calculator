@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>339</width>
+    <width>346</width>
     <height>321</height>
    </rect>
   </property>
@@ -24,23 +24,13 @@
        <pointsize>30</pointsize>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QLabel {background:rgb(117, 248, 255)}</string>
+     </property>
      <property name="text">
       <string>0</string>
      </property>
     </widget>
-   </item>
-   <item>
-    <spacer name="verticalSpacer">
-     <property name="orientation">
-      <enum>Qt::Vertical</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>20</width>
-       <height>40</height>
-      </size>
-     </property>
-    </spacer>
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
@@ -116,6 +106,9 @@
          <family>Arial</family>
          <pointsize>20</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {background:rgb(240, 240, 255)}</string>
        </property>
        <property name="text">
         <string>*</string>
@@ -195,6 +188,12 @@
          <pointsize>20</pointsize>
         </font>
        </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {background:rgb(240, 240, 255)}</string>
+       </property>
        <property name="text">
         <string>(</string>
        </property>
@@ -208,6 +207,12 @@
          <pointsize>20</pointsize>
         </font>
        </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {background:rgb(240, 240, 255)}</string>
+       </property>
        <property name="text">
         <string>+</string>
        </property>
@@ -220,6 +225,9 @@
          <family>Arial</family>
          <pointsize>20</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {background:rgb(240, 240, 255)}</string>
        </property>
        <property name="text">
         <string>-</string>
@@ -247,6 +255,9 @@
          <pointsize>20</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {background:rgb(240, 240, 255)}</string>
+       </property>
        <property name="text">
         <string>CE</string>
        </property>
@@ -259,6 +270,9 @@
          <family>Arial</family>
          <pointsize>20</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {background:rgb(240, 240, 255)}</string>
        </property>
        <property name="text">
         <string>)</string>
@@ -286,6 +300,9 @@
          <pointsize>20</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {background:rgb(240, 240, 255)}</string>
+       </property>
        <property name="text">
         <string>/</string>
        </property>
@@ -298,6 +315,9 @@
          <family>Arial</family>
          <pointsize>20</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {background:rgb(240, 240, 255)}</string>
        </property>
        <property name="text">
         <string>C</string>
