@@ -6,7 +6,7 @@
 #include <fstream>
 #include <string>
 
-
+#include <QDebug>
 
 template<typename T>
 class DyArray
@@ -329,6 +329,7 @@ auto perform(T op1, U op2, std::string token)
 
 double calculate(const std::string& name)
 {
+
     DyArray<std::string> stack;
     DyArray<std::string> queue;
 
@@ -341,12 +342,30 @@ double calculate(const std::string& name)
     {
         std::string token;
         //operand case
-        if (isdigit(name[i]))
+
+        //check to see if there is a negative number and not a operator
+        if (name[i] == '-' && (i == 0 || name[i-1] == '('))
+        {
+            token = '-';
+            i++;
+            while (i < size && (isdigit(name[i]) || name[i] == '.'))
+            {
+
+                token += name[i++];
+                qDebug() << "token: " << token;
+
+            }
+            i--;
+        }
+
+        //check for positive numbers
+        else if (isdigit(name[i]))
         {
             while (i < size && (isdigit(name[i]) || name[i] == '.'))
             {
 
                 token += name[i++];
+                qDebug() << "token2: " << token;
 
             }
             i--;
@@ -356,7 +375,9 @@ double calculate(const std::string& name)
         {
             token = name[i];
         }
-        if (isdigit(token[0]))
+        //if first token is a digit, then rest of the token has to be a digit
+        //or if first token is '-' followed by a digit, token has to be a negative number
+        if (isdigit(token[0]) || (token[0] == '-' && isdigit(token[1])))
         {
             queue.add(token);
         }
@@ -396,7 +417,7 @@ double calculate(const std::string& name)
     {
         std::string token = queue.remove_first();
 
-        if (isdigit(token[0]))
+        if (isdigit(token[0]) || (token[0] == '-' && isdigit(token[1])))
         {
             stack2.add(stod(token));
 
@@ -422,6 +443,8 @@ double calculate(const std::string& name)
     {
         throw std::invalid_argument("Error, answer not found");
     }
+
+
 }
 
 
