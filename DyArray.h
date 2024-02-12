@@ -2,11 +2,12 @@
 #define DYARRAY_H
 
 
+
 #include <iostream>
 #include <fstream>
 #include <string>
 
-#include <QDebug>
+
 
 template<typename T>
 class DyArray
@@ -305,7 +306,7 @@ int precedence2(std::string op)
 }
 
 template<typename T, typename U>
-auto perform(T op1, U op2, std::string token)
+auto perform(T op1, U op2, const std::string& token)
 {
     char token2 = token[0];
     switch (token2)
@@ -327,7 +328,7 @@ auto perform(T op1, U op2, std::string token)
     }
 }
 
-double calculate(const std::string& name)
+auto calculate(const std::string& name)
 {
 
     DyArray<std::string> stack;
@@ -352,7 +353,7 @@ double calculate(const std::string& name)
             {
 
                 token += name[i++];
-                qDebug() << "token: " << token;
+
 
             }
             i--;
@@ -365,7 +366,6 @@ double calculate(const std::string& name)
             {
 
                 token += name[i++];
-                qDebug() << "token2: " << token;
 
             }
             i--;

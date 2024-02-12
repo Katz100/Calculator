@@ -183,7 +183,7 @@ void Widget::equalButtonClicked()
 
 
     try {
-    double answer = calculate(operation.toStdString());
+    auto answer = calculate(operation.toStdString());
     operation.clear();
     ui->operationLabel->setText(QString::number(answer));
 
